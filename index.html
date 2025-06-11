@@ -35,12 +35,14 @@
   const hasVisited = localStorage.getItem("sinephile_has_visited");
   const delay = 0;
 
-  const isOnGitHubPages = location.hostname.endsWith("github.io");
+  const isOnGitHubPages = location.hostname === "www.sinephile.com" &&
+                          !document.referrer.includes("substack.com") &&
+                          !location.pathname.includes("start-here");
+
   const isSecure = location.protocol === "https:";
 
   setTimeout(() => {
     if (isOnGitHubPages && isSecure) {
-      // First-time visitors go to Substack's /start-here to bypass reg gate
       if (!hasVisited) {
         localStorage.setItem("sinephile_has_visited", "true");
         window.location.href = "https://sinephile.substack.com/start-here";
@@ -48,9 +50,10 @@
         window.location.href = "https://sinephile.substack.com";
       }
     }
-    // Else: do nothing (already on Substack or fallback)
+    // Else: we're already on Substack, or not GitHub — do nothing
   }, delay);
 </script>
+
 
 </head>
 

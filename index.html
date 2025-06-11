@@ -31,22 +31,22 @@
   <meta name="twitter:site" content="@SINephileHQ" />
 
   <script>
-    const hasVisited = localStorage.getItem("sinephile_has_visited");
-    const delay = 0;
+  const hasVisited = localStorage.getItem("sinephile_has_visited");
+  const delay = 0;
 
-    setTimeout(() => {
-      const certSafe =
-        location.protocol === "https:" &&
-        location.hostname === "www.sinephile.com";
-      if (!hasVisited && certSafe) {
-        localStorage.setItem("sinephile_has_visited", "true");
-        window.location.href = "https://www.sinephile.com/start-here";
-      } else if (certSafe) {
-        window.location.href = "https://www.sinephile.com";
-      }
-      // Otherwise, stay on GitHub Pages fallback
-    }, delay);
-  </script>
+  setTimeout(() => {
+    const isGitHubPages = location.hostname.includes("github.io");
+    const certSafe = location.protocol === "https:";
+
+    if (!hasVisited && isGitHubPages && certSafe) {
+      localStorage.setItem("sinephile_has_visited", "true");
+      window.location.href = "https://www.sinephile.com/start-here";
+    } else if (isGitHubPages && certSafe) {
+      window.location.href = "https://www.sinephile.com";
+    }
+    // Otherwise: stay put — you're already on www.sinephile.com or not HTTPS-ready
+  }, delay);
+</script>
 </head>
 <body>
   <p>Redirecting to SINephile...</p>

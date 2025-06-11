@@ -44,20 +44,21 @@
 <p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="twitter:image" content="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2cd04cc2-e9f8-4447-9930-4cd86088a4ac%2Fapple-touch-icon-1024x1024.png" /&gt;</p>
 <p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="twitter:site" content="@SINephileHQ" /&gt;</p>
 <p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>// Smart redirect: first visit goes to /start-here, others go to homepage</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const hasVisited = localStorage.getItem("sinephile_has_visited");</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const delay = 0; // milliseconds</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>setTimeout(() =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>if (!hasVisited) {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>localStorage.setItem("sinephile_has_visited", "true");</p>
-<p class="p1"><span class="Apple-converted-space">        </span>window.location.href = "https://www.sinephile.com/start-here";</p>
-<p class="p1"><span class="Apple-converted-space">      </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>window.location.href = "https://www.sinephile.com";</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}, delay);</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
+<script>
+  const hasVisited = localStorage.getItem("sinephile_has_visited");
+  const delay = 0;
+
+  setTimeout(() => {
+    const certSafe = location.protocol === "https:" && location.hostname === "www.sinephile.com";
+    if (!hasVisited && certSafe) {
+      localStorage.setItem("sinephile_has_visited", "true");
+      window.location.href = "https://www.sinephile.com/start-here";
+    } else if (certSafe) {
+      window.location.href = "https://www.sinephile.com";
+    }
+    // Otherwise, stay on GitHub Pages fallback
+  }, delay);
+</script>
 <p class="p1">&lt;/head&gt;</p>
 <p class="p2"><br></p>
 <p class="p1">&lt;body&gt;</p>

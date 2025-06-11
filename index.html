@@ -1,35 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SINephile</title>
+<script>
+  const hasVisited = localStorage.getItem("sinephile_has_visited");
+  const delay = 0;
 
-    <!-- Metadata can be re-added later, stripped here for safety -->
+  setTimeout(() => {
+    const isCustomDomain = location.hostname === "www.sinephile.com";
+    const isGitHubDomain = location.hostname === "sinephile.github.io";
+    const isSecure = location.protocol === "https:";
 
-    <script>
-      const hasVisited = localStorage.getItem("sinephile_has_visited");
-      const delay = 0;
-
-      setTimeout(() => {
-        const isOnGitHubPages = location.hostname === "sinephile.github.io";
-        const isSecure = location.protocol === "https:";
-
-        if (!hasVisited && isOnGitHubPages && isSecure) {
-          localStorage.setItem("sinephile_has_visited", "true");
-          window.location.href = "https://www.sinephile.com/start-here";
-        } else if (isOnGitHubPages && isSecure) {
-          window.location.href = "https://www.sinephile.com";
-        }
-        // No redirect otherwise
-      }, delay);
-    </script>
-  </head>
-  <body>
-    <p>Redirecting to SINephile...</p>
-    <noscript>
-      <!-- <meta http-equiv="refresh" content="0; url=https://www.sinephile.com" /> -->
-      <p>If you're not redirected, <a href="https://www.sinephile.com">click here</a>.</p>
-    </noscript>
-  </body>
-</html>
+    // Only redirect when on GitHub Pages, not already on custom domain
+    if (!hasVisited && isGitHubDomain && isSecure) {
+      localStorage.setItem("sinephile_has_visited", "true");
+      window.location.href = "https://www.sinephile.com/start-here";
+    } else if (isGitHubDomain && isSecure) {
+      window.location.href = "https://www.sinephile.com";
+    }
+    // No redirect if already on custom domain
+  }, delay);
+</script>

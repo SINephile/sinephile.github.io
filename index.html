@@ -30,23 +30,23 @@
   <meta name="twitter:image" content="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2cd04cc2-e9f8-4447-9930-4cd86088a4ac%2Fapple-touch-icon-1024x1024.png" />
   <meta name="twitter:site" content="@SINephileHQ" />
 
-  <script>
+<script>
   const hasVisited = localStorage.getItem("sinephile_has_visited");
   const delay = 0;
 
   setTimeout(() => {
-    const isGitHubPages = location.hostname.includes("github.io");
-    const certSafe = location.protocol === "https:";
+    const isOnGitHubPages = location.hostname === "sinephile.github.io";
+    const isSecure = location.protocol === "https:";
 
-    if (!hasVisited && isGitHubPages && certSafe) {
+    if (!hasVisited && isOnGitHubPages && isSecure) {
       localStorage.setItem("sinephile_has_visited", "true");
       window.location.href = "https://www.sinephile.com/start-here";
-    } else if (isGitHubPages && certSafe) {
+    } else if (isOnGitHubPages && isSecure) {
       window.location.href = "https://www.sinephile.com";
     }
-    // Otherwise: stay put — you're already on www.sinephile.com or not HTTPS-ready
   }, delay);
 </script>
+
 </head>
 <body>
   <p>Redirecting to SINephile...</p>

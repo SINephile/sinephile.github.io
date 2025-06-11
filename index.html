@@ -22,21 +22,25 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="https://substack-post-media.s3.amazonaws.com/public/images/2cd04cc2-e9f8-4447-9930-4cd86088a4ac/apple-touch-icon-1024x1024.png" />
 
-    <script>
-    const hasVisited = localStorage.getItem("sinephile_has_visited");
-    const isRoot = location.pathname === "/" || location.pathname === "/index.html";
-    const isSecure = location.protocol === "https:";
-    const isApex = location.hostname === "sinephile.com";
+<script>
+  const hasVisited = localStorage.getItem("sinephile_has_visited");
+  const isSecure = location.protocol === "https:";
+  const isApex = location.hostname === "sinephile.com";
+  const isRoot = location.pathname === "/" || location.pathname === "/index.html";
 
-    if (isRoot && isSecure && isApex) {
-      if (!hasVisited) {
-        localStorage.setItem("sinephile_has_visited", "true");
-        window.location.replace("https://www.sinephile.com/p/welcome");
-      } else {
-        window.location.replace("https://www.sinephile.com");
-      }
+  if (isApex && isSecure && isRoot) {
+    const target = hasVisited
+      ? "https://www.sinephile.com"
+      : "https://www.sinephile.com/p/welcome";
+
+    if (!hasVisited) {
+      localStorage.setItem("sinephile_has_visited", "true");
     }
-  </script>
+
+    window.location.replace(target);
+  }
+</script>
+
 </head>
 <body>
   <p>Redirecting...</p>

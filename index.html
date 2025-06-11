@@ -10,7 +10,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.sinephile.com" />
   <meta property="og:image" content="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2cd04cc2-e9f8-4447-9930-4cd86088a4ac%2Fapple-touch-icon-1024x1024.png" />
-  <meta property="og:description" content="Film history with range—from prestige to pulp, crash courses, and a threat assessment index tracking streaming's contribution to theatrical collapse." />
+  <meta property="og:description" content="Film history with range—from prestige to pulp, crash courses, and a DEFCON countdown for theatrical collapse." />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -24,32 +24,22 @@
 
   <script>
     const hasVisited = localStorage.getItem("sinephile_has_visited");
-    const delay = 0;
+    const isSecure = location.protocol === "https:";
+    const isRootPath = location.pathname === "/" || location.pathname === "";
 
-    setTimeout(() => {
-      const isRootPath = location.pathname === "/" || location.pathname === "";
-      const isOnGitHub = location.hostname === "www.sinephile.com";
-      const isSecure = location.protocol === "https:";
-
-      if (isRootPath && isOnGitHub && isSecure) {
-        if (!hasVisited) {
-          localStorage.setItem("sinephile_has_visited", "true");
-          window.location.href = "https://www.sinephile.com/p/welcome";
-        } else {
-          window.location.href = "https://www.sinephile.com";
-        }
-      }
-      // If this isn’t root, do nothing
-    }, delay);
+    // Only redirect if we're on root path and haven't visited before
+    if (isSecure && isRootPath && !hasVisited) {
+      localStorage.setItem("sinephile_has_visited", "true");
+      window.location.href = "https://www.sinephile.com/p/welcome";
+    }
   </script>
 </head>
 
 <body>
   <noscript>
+    <!-- Basic fallback for JS-disabled browsers -->
     <meta http-equiv="refresh" content="0; url=https://www.sinephile.com/p/welcome" />
     <p>If you're not redirected, <a href="https://www.sinephile.com/p/welcome">click here</a>.</p>
   </noscript>
 </body>
 </html>
-
-

@@ -1,58 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SINephile</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SINephile</title>
 
-  <!-- Structured Data for Google -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "SINephile",
-    "url": "https://www.sinephile.com",
-    "logo": "https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2cd04cc2-e9f8-4447-9930-4cd86088a4ac%2Fapple-touch-icon-1024x1024.png"
-  }
-  </script>
+    <!-- Metadata can be re-added later, stripped here for safety -->
 
-  <!-- Open Graph Metadata -->
-  <meta property="og:title" content="SINephile" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.sinephile.com" />
-  <meta property="og:image" content="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2cd04cc2-e9f8-4447-9930-4cd86088a4ac%2Fapple-touch-icon-1024x1024.png" />
-  <meta property="og:description" content="Film history with range—from prestige to pulp, crash courses, and a DEFCON countdown for theatrical collapse." />
+    <script>
+      const hasVisited = localStorage.getItem("sinephile_has_visited");
+      const delay = 0;
 
-  <!-- Twitter Card Metadata -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="SINephile" />
-  <meta name="twitter:description" content="Crash courses. Deep cuts. Streaming threat level: rising." />
-  <meta name="twitter:image" content="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2cd04cc2-e9f8-4447-9930-4cd86088a4ac%2Fapple-touch-icon-1024x1024.png" />
-  <meta name="twitter:site" content="@SINephileHQ" />
+      setTimeout(() => {
+        const isOnGitHubPages = location.hostname === "sinephile.github.io";
+        const isSecure = location.protocol === "https:";
 
-<script>
-  const hasVisited = localStorage.getItem("sinephile_has_visited");
-  const delay = 0;
-
-  setTimeout(() => {
-    const isOnGitHubPages = location.hostname === "sinephile.github.io";
-    const isSecure = location.protocol === "https:";
-
-    if (!hasVisited && isOnGitHubPages && isSecure) {
-      localStorage.setItem("sinephile_has_visited", "true");
-      window.location.href = "https://www.sinephile.com/start-here";
-    } else if (isOnGitHubPages && isSecure) {
-      window.location.href = "https://www.sinephile.com";
-    }
-  }, delay);
-</script>
-
-</head>
-<body>
-  <p>Redirecting to SINephile...</p>
-  <noscript>
-    <!-- <meta http-equiv="refresh" content="0; url=https://www.sinephile.com" /> -->
-    <p>If you're not redirected, <a href="https://www.sinephile.com">click here</a>.</p>
-  </noscript>
-</body>
+        if (!hasVisited && isOnGitHubPages && isSecure) {
+          localStorage.setItem("sinephile_has_visited", "true");
+          window.location.href = "https://www.sinephile.com/start-here";
+        } else if (isOnGitHubPages && isSecure) {
+          window.location.href = "https://www.sinephile.com";
+        }
+        // No redirect otherwise
+      }, delay);
+    </script>
+  </head>
+  <body>
+    <p>Redirecting to SINephile...</p>
+    <noscript>
+      <!-- <meta http-equiv="refresh" content="0; url=https://www.sinephile.com" /> -->
+      <p>If you're not redirected, <a href="https://www.sinephile.com">click here</a>.</p>
+    </noscript>
+  </body>
 </html>

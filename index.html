@@ -5,67 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SINephile</title>
 
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "SINephile",
-      "url": "https://www.sinephile.com",
-      "logo": "https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2cd04cc2-e9f8-4447-9930-4cd86088a4ac%2Fapple-touch-icon-1024x1024.png"
-    }
-  </script>
-
-  <!-- Open Graph Metadata -->
+  <!-- Open Graph -->
   <meta property="og:title" content="SINephile" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.sinephile.com" />
   <meta property="og:image" content="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2cd04cc2-e9f8-4447-9930-4cd86088a4ac%2Fapple-touch-icon-1024x1024.png" />
-  <meta property="og:description" content="Film history with range—from prestige to pulp, crash courses, and a DEFCON countdown for theatrical collapse." />
+  <meta property="og:description" content="Film history with range—from prestige to pulp, crash courses, and a threat assessment index tracking streaming's contribution to theatrical collapse." />
 
-  <!-- Twitter Metadata -->
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="SINephile" />
   <meta name="twitter:description" content="Crash courses. Deep cuts. Streaming threat level: rising." />
   <meta name="twitter:image" content="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2cd04cc2-e9f8-4447-9930-4cd86088a4ac%2Fapple-touch-icon-1024x1024.png" />
   <meta name="twitter:site" content="@SINephileHQ" />
 
-  <!-- Redirect Logic -->
-<script>
-  const hasVisited = localStorage.getItem("sinephile_has_visited");
-  const delay = 0;
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2cd04cc2-e9f8-4447-9930-4cd86088a4ac%2Fapple-touch-icon-1024x1024.png" />
 
-  const isOnGitHubFallback = location.hostname === "www.sinephile.com" &&
-                             !location.href.includes("substack.com") &&
-                             !location.pathname.includes("start-here");
+  <script>
+    const hasVisited = localStorage.getItem("sinephile_has_visited");
+    const delay = 0;
 
-  const isSecure = location.protocol === "https:";
+    setTimeout(() => {
+      const isRootPath = location.pathname === "/" || location.pathname === "";
+      const isOnGitHub = location.hostname === "www.sinephile.com";
+      const isSecure = location.protocol === "https:";
 
-  setTimeout(() => {
-    if (isOnGitHubFallback && isSecure) {
-      if (!hasVisited) {
-        localStorage.setItem("sinephile_has_visited", "true");
-        window.location.href = "https://sinephile.substack.com/start-here";
-      } else {
-        window.location.href = "https://sinephile.substack.com";
+      if (isRootPath && isOnGitHub && isSecure) {
+        if (!hasVisited) {
+          localStorage.setItem("sinephile_has_visited", "true");
+          window.location.href = "https://www.sinephile.com/p/welcome";
+        } else {
+          window.location.href = "https://www.sinephile.com";
+        }
       }
-    }
-    // Already on Substack or another non-GitHub domain = do nothing
-  }, delay);
-</script>
-<noscript>
-  <meta http-equiv="refresh" content="0; url=https://sinephile.substack.com">
-  <p>If you're not redirected, <a href="https://sinephile.substack.com">click here</a>.</p>
-</noscript>
-
-
+      // If this isn’t root, do nothing
+    }, delay);
+  </script>
 </head>
 
 <body>
   <noscript>
-    <!-- Optional fallback link (hidden if JS is enabled) -->
-    <p>If you're not redirected, <a href="https://sinephile.substack.com">click here</a>.</p>
+    <meta http-equiv="refresh" content="0; url=https://www.sinephile.com/p/welcome" />
+    <p>If you're not redirected, <a href="https://www.sinephile.com/p/welcome">click here</a>.</p>
   </noscript>
 </body>
 </html>
+
 
